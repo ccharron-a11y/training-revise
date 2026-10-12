@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="LITMOSCAT-cLIosSGmBNBHhXZvSofc" version="1" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+  </metadata>
+  <organizations default="LITMOSCAT-cLIosSGmBNBHhXZvSofc-org">
+    <organization identifier="LITMOSCAT-cLIosSGmBNBHhXZvSofc-org">
+      <title>QA/QC Field Documentation Training</title>
+      <item identifier="I_SCO0" identifierref="SCO0">
+        <title>QA/QC Field Documentation Training</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="SCO0" type="webcontent" adlcp:scormtype="sco" href="shell.html">
+      <file href="shell.html"/>
+      <dependency identifierref="ALLRESOURCES"/>
+    </resource>
+    <resource identifier="ALLRESOURCES" type="webcontent" adlcp:scormtype="asset">
+      <file href="data/en_US/data.xml"/>
+      <file href="shell.html"/>
+      <file href="components/introduction/introduction.html"/>
+      <file href="components/introduction/logo.png"/>
+      <file href="components/standard_md/standard_md.html"/>
+      <file href="templates/templates.html"/>
+      <file href="shared/images/a5bd9ffe-e971-4ea1-a594-d25efd5ff52f.png"/>
+      <file href="images/logo.png"/>
+      <file href="css/bundle-88fb56c5f8ef3187b72423c20b6a7e62.css"/>
+      <file href="js/core.d9428808b8eeac37b7fa89471010f85d.bundle.js"/>
+      <file href="js/project.d9428808b8eeac37b7fa89471010f85d.bundle.js"/>
+      <file href="js/vendor.d9428808b8eeac37b7fa89471010f85d.bundle.js"/>
+      <file href="data/language.js"/>
+    </resource>
+  </resources>
+</manifest>
