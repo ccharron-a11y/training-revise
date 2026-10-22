@@ -1,0 +1,238 @@
+<!-- 5 Whys fishbone interactive. Paste this whole block into a Litmos embed-code block. -->
+<div id="cx5why">
+<style>
+#cx5why { all: initial !important; display: block !important; }
+#cx5why h3.cx5-h { font-size: 20px !important; font-weight: 700 !important; line-height: 1.3 !important; margin: 0 0 6px !important; padding: 0 !important; border: 0 !important; text-transform: none !important; letter-spacing: 0 !important; color: var(--text) !important; font-family: inherit !important; }
+#cx5why p, #cx5why ul, #cx5why li { font-family: inherit !important; line-height: 1.45 !important; }
+#cx5why p { margin: 0 !important; }
+#cx5why button { line-height: 1.2 !important; text-transform: none !important; letter-spacing: 0 !important; box-shadow: none !important; min-width: 0 !important; width: auto !important; height: auto !important; font-family: inherit !important; }
+#cx5why svg text { font-family: inherit !important; }
+#cx5why svg.diagram { max-width: none !important; min-width: 0 !important; }
+
+#cx5why {
+    --green: #4fbe50;
+    --green-dark: #2f8a31;
+    --yellow: #ffc100;
+    --text: #272727;
+    --muted: #6b6f73;
+    --line: #c9cdd1;
+    --ruled: #b7bbbf;
+    --bg: #ffffff;
+    --panel: #f5f7f8;
+  }
+#cx5why, #cx5why * { box-sizing: border-box !important; }
+#cx5why { margin: 0 !important; background: var(--bg) !important; color: var(--text) !important;
+    font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important; }
+#cx5why .wrap { max-width: 980px !important; margin: 0 auto !important; padding: 16px !important; }
+#cx5why .step-label { font-size: 13px !important; font-weight: 700 !important; letter-spacing: .04em !important; text-transform: uppercase !important; color: var(--green-dark) !important; margin: 0 0 4px !important; }
+#cx5why h3.cx5-h { font-size: 20px !important; margin: 0 0 6px !important; }
+#cx5why .intro { margin: 0 0 12px !important; color: var(--muted) !important; }
+#cx5why .diagram { width: 100% !important; height: auto !important; display: block !important; background: var(--panel) !important; border-radius: 10px !important; }
+#cx5why .spine { stroke: var(--text) !important; stroke-width: 4 !important; }
+#cx5why .bone { stroke: var(--line) !important; stroke-width: 3 !important; transition: stroke .3s !important; }
+#cx5why .bone.active { stroke: var(--green) !important; stroke-width: 4 !important; }
+#cx5why .bone.ruled { stroke: var(--ruled) !important; stroke-dasharray: 6 5 !important; }
+#cx5why .cat { font-size: 15px !important; font-weight: 700 !important; fill: var(--text) !important; }
+#cx5why .cand { font-size: 13px !important; fill: var(--text) !important; transition: opacity .3s !important; }
+#cx5why .ruled-text { fill: var(--muted) !important; text-decoration: line-through !important; }
+#cx5why .head { fill: var(--yellow) !important; stroke: var(--text) !important; stroke-width: 2 !important; }
+#cx5why .head-text { font-size: 14px !important; font-weight: 700 !important; fill: var(--text) !important; }
+#cx5why .why-node circle { fill: #fff !important; stroke: var(--line) !important; stroke-width: 2 !important; transition: all .3s !important; }
+#cx5why .why-node text { font-size: 13px !important; font-weight: 700 !important; fill: var(--muted) !important; }
+#cx5why .why-node.done circle { fill: var(--green) !important; stroke: var(--green-dark) !important; }
+#cx5why .why-node.done text { fill: #fff !important; }
+#cx5why .why-node.root circle { fill: var(--yellow) !important; stroke: var(--text) !important; }
+#cx5why .why-node.root text { fill: var(--text) !important; }
+#cx5why .card { margin-top: 14px !important; border: 1px solid var(--line) !important; border-left: 6px solid var(--green) !important; border-radius: 8px !important; padding: 14px 16px !important; background: #fff !important; }
+#cx5why .card.root { border-left-color: var(--yellow) !important; }
+#cx5why .q { font-weight: 700 !important; font-size: 17px !important; margin: 0 0 4px !important; }
+#cx5why .a { margin: 0 0 8px !important; }
+#cx5why .evidence { margin: 0 !important; font-size: 14px !important; color: var(--muted) !important; }
+#cx5why .evidence b { color: var(--text) !important; }
+#cx5why ul.ruled-list { margin: 6px 0 0 !important; padding-left: 20px !important; font-size: 14px !important; }
+#cx5why ul.ruled-list li { margin: 3px 0 !important; }
+#cx5why .issue { background: var(--panel) !important; border-radius: 6px !important; padding: 10px 12px !important; font-size: 14px !important; margin: 8px 0 0 !important; }
+#cx5why .nav { display: flex !important; gap: 10px !important; margin-top: 14px !important; flex-wrap: wrap !important; }
+#cx5why button { font: inherit !important; font-weight: 700 !important; border-radius: 6px !important; padding: 10px 18px !important; cursor: pointer !important; border: 2px solid var(--green) !important; }
+#cx5why .primary { background: var(--green) !important; color: var(--text) !important; }
+#cx5why .secondary { background: #fff !important; color: var(--text) !important; }
+#cx5why button:focus-visible { outline: 3px solid var(--yellow) !important; outline-offset: 2px !important; }
+#cx5why button[disabled] { opacity: .45 !important; cursor: default !important; }
+#cx5why .progress { margin-left: auto !important; align-self: center !important; font-size: 13px !important; color: var(--muted) !important; }
+#cx5why .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip: rect(0 0 0 0) !important; }
+@media (max-width: 560px) {
+#cx5why .cand { display: none !important; }
+#cx5why .progress { margin-left: 0 !important; width: 100% !important; }
+  
+}
+@media (prefers-reduced-motion: reduce) {
+#cx5why, #cx5why * { transition: none !important; } 
+}
+</style>
+<div class="wrap">
+  <p class="step-label" id="cx5-stepLabel"></p>
+  <h3 class="cx5-h" id="cx5-title"></h3>
+  <p class="intro" id="cx5-intro"></p>
+
+  <svg class="diagram" viewBox="0 0 960 400" role="img" aria-labelledby="cx5-dgTitle cx5-dgDesc">
+    <title id="cx5-dgTitle">Fishbone diagram for the problem: Room 214 is 4 degrees above setpoint</title>
+    <desc id="cx5-dgDesc">Six cause categories branch off a central spine. The 5 Whys chain runs along the Controls and BAS bone.</desc>
+    <line class="spine" x1="40" y1="200" x2="770" y2="200"/>
+    <polygon class="head" points="770,150 930,150 950,200 930,250 770,250"/>
+    <text class="head-text" x="860" y="190" text-anchor="middle">Room 214</text>
+    <text class="head-text" x="860" y="210" text-anchor="middle">4°F above</text>
+    <text class="head-text" x="860" y="230" text-anchor="middle">setpoint</text>
+    <g id="cx5-bones"></g>
+    <g id="cx5-whys"></g>
+  </svg>
+
+  <div id="cx5-panel" aria-live="polite"></div>
+
+  <div class="nav">
+    <button class="secondary" id="cx5-back">Back</button>
+    <button class="primary" id="cx5-next"></button>
+    <span class="progress" id="cx5-progress"></span>
+  </div>
+</div>
+<script>(function () {
+  const $ = id => document.getElementById("cx5-" + id);
+
+  // Content. Edit text here; the layout adapts.
+  const categories = [
+    { id: "equip",   name: "Equipment",        cand: "Reheat coil failed?",  top: true,  x: 170,
+      ruled: "Coil passed its pressure test, and hot water flows when the valve is opened by hand." },
+    { id: "hw",      name: "Hot water supply", cand: "No hot water at coil?", top: true,  x: 400,
+      ruled: "Hot water supply reads 140°F at the coil inlet." },
+    { id: "controls",name: "Controls & BAS",   cand: "Valve not responding?", top: true,  x: 630, keep: true },
+    { id: "design",  name: "Design",           cand: "Box undersized?",      top: false, x: 170,
+      ruled: "Box matches the equipment schedule, and identical rooms on the same design hold setpoint." },
+    { id: "tab",     name: "Airflow / TAB",    cand: "Airflow too high?",    top: false, x: 400,
+      ruled: "TAB report shows heating airflow at the design minimum." },
+    { id: "ops",     name: "Operation",        cand: "Wrong setpoint?",      top: false, x: 630,
+      ruled: "Setpoint is 72°F, matching the sequence of operations." },
+  ];
+
+  const whys = [
+    { q: "Why is Room 214 above setpoint?", a: "The VAV box is delivering warm air when the BAS is calling for cooling.",
+      ev: "Discharge air reads 88°F while the BAS shows a cooling demand and the reheat valve commanded closed (0%)." },
+    { q: "Why is the air warm?", a: "The reheat valve is open, even though the BAS commands it closed.",
+      ev: "The valve stem is at full open, and the coil return pipe is hot to the touch." },
+    { q: "Why is the valve open?", a: "The actuator is receiving a full-open signal.",
+      ev: "Meter reads 10 V DC at the actuator terminals while the BAS shows 0% command on the valve point." },
+    { q: "Why is it getting a full-open signal?", a: "The actuator is landed on the wrong controller output.",
+      ev: "Wire traced from the actuator to output AO-4. The points list assigns the reheat valve to AO-2; AO-4 is a 0–10 V output held at 100%." },
+    { q: "Why is it on the wrong output?", a: "The field wiring doesn't match the approved controls submittal.",
+      ev: "Approved submittal 23 09 23-004, p. 12 shows the reheat valve on AO-2." }
+  ];
+
+  const root = {
+    cause: "Reheat valve actuator for VAV-2-14 is wired to output AO-4 instead of AO-2.",
+    party: "Controls contractor",
+    issue: "Level 2, Room 214, VAV-2-14: Space temperature 4°F above setpoint during cooling. Reheat valve actuator is landed on AO-4 instead of AO-2. Not IAW approved submittal 23 09 23-004, p. 12. Required action: Re-land the actuator per the approved submittal, verify the valve tracks the BAS command, and notify CxA for re-inspection. See Photos 1–3 and the attached trend."
+  };
+
+  // Steps: 0 brainstorm, 1 evidence, 2..6 whys, 7 root cause
+  const TOTAL = 2 + whys.length + 1;
+  let step = 0;
+
+  const svgNS = "http://www.w3.org/2000/svg";
+  const bonesG = $("bones");
+  const whysG = $("whys");
+  const el = (n, a, t) => { const e = document.createElementNS(svgNS, n);
+    for (const k in a) e.setAttribute(k, a[k]); if (t) e.textContent = t; return e; };
+
+  // Draw bones
+  categories.forEach(c => {
+    const y2 = c.top ? 40 : 360;
+    const x1 = c.x + 90;
+    const g = el("g", { id: "cx5-b-" + c.id });
+    g.appendChild(el("line", { class: "bone", x1: x1, y1: 200, x2: c.x, y2: y2 }));
+    g.appendChild(el("text", { class: "cat", x: c.x, y: c.top ? 28 : 385, "text-anchor": "middle" }, c.name));
+    g.appendChild(el("text", { class: "cand", x: c.x + 58, y: c.top ? 100 : 306, "text-anchor": "start" }, c.cand));
+    bonesG.appendChild(g);
+  });
+
+  // Why nodes along the Controls bone (from spine up toward its tip)
+  const ctl = categories.find(c => c.keep);
+  const bx1 = ctl.x + 90, by1 = 200, bx2 = ctl.x, by2 = 40;
+  whys.forEach((w, i) => {
+    const t = (i + 1) / (whys.length + 0.6);
+    const cx = bx1 + (bx2 - bx1) * t, cy = by1 + (by2 - by1) * t;
+    const g = el("g", { class: "why-node", id: "cx5-w" + i });
+    g.appendChild(el("circle", { cx: cx, cy: cy, r: 13 }));
+    g.appendChild(el("text", { x: cx, y: cy + 4.5, "text-anchor": "middle" }, String(i + 1)));
+    whysG.appendChild(g);
+  });
+
+  
+
+  function render() {
+    // Diagram state
+    categories.forEach(c => {
+      const g = $("b-" + c.id);
+      const bone = g.querySelector(".bone"), cand = g.querySelector(".cand");
+      const ruled = step >= 1 && !c.keep;
+      bone.classList.toggle("ruled", ruled);
+      bone.classList.toggle("active", step >= 2 && c.keep);
+      cand.classList.toggle("ruled-text", ruled);
+      cand.style.opacity = (step >= 2 && c.keep) ? 0 : 1;
+    });
+    whys.forEach((w, i) => {
+      const g = $("w" + i);
+      g.style.opacity = step >= 2 ? 1 : 0;
+      g.classList.toggle("done", step >= 2 + i);
+      g.classList.toggle("root", step === TOTAL - 1 && i === whys.length - 1);
+    });
+
+    // Text
+    let label, title, intro, html, nextText;
+    if (step === 0) {
+      label = "Step 1 of " + TOTAL + " · Brainstorm";
+      title = "Map the possible causes";
+      intro = "A fishbone diagram lists possible causes by category before you pick one. Each bone is a category; each question is a candidate cause.";
+      html = '<div class="card"><p class="q">The symptom</p><p class="a">Room 214 is 4°F above setpoint during occupied cooling hours.</p><p class="evidence">This is the <b>observed condition</b>. It goes in the issue, but it is not the root cause.</p></div>';
+      nextText = "Check the evidence";
+    } else if (step === 1) {
+      label = "Step 2 of " + TOTAL + " · Evidence";
+      title = "Rule causes out with evidence, not opinion";
+      intro = "Each candidate is checked against a reading, a report or an observation. Five are ruled out. One bone is left.";
+      html = '<div class="card"><p class="q">Ruled out</p><ul class="ruled-list">' +
+        categories.filter(c => !c.keep).map(c => "<li><b>" + c.name + ":</b> " + c.ruled + "</li>").join("") +
+        '</ul><p class="evidence" style="margin-top:8px"><b>Still open:</b> Controls &amp; BAS. Now ask "why" along that bone.</p></div>';
+      nextText = "Ask the first why";
+    } else if (step < TOTAL - 1) {
+      const i = step - 2, w = whys[i];
+      label = "Step " + (step + 1) + " of " + TOTAL + " · Why #" + (i + 1);
+      title = w.q;
+      intro = "Answer with evidence before you ask the next why.";
+      html = '<div class="card"><p class="q">' + w.q + '</p><p class="a">' + w.a + '</p><p class="evidence"><b>Evidence:</b> ' + w.ev + '</p></div>';
+      nextText = i === whys.length - 1 ? "Name the root cause" : "Ask why again";
+    } else {
+      label = "Step " + TOTAL + " of " + TOTAL + " · Root cause";
+      title = "Stop at a cause someone can fix";
+      intro = "\"Bad wiring\" isn't a root cause. A specific, fixable condition with an owner is.";
+      html = '<div class="card root"><p class="q">Root cause</p><p class="a">' + root.cause + '</p>' +
+        '<p class="evidence"><b>Responsible party:</b> ' + root.party + '</p>' +
+        '<p class="issue"><b>Issue statement:</b> ' + root.issue + '</p></div>';
+      nextText = "Start over";
+    }
+    $("stepLabel").textContent = label;
+    $("title").textContent = title;
+    $("intro").textContent = intro;
+    $("panel").innerHTML = html;
+    $("next").textContent = nextText;
+    $("back").disabled = step === 0;
+    $("progress").textContent = (step + 1) + " / " + TOTAL;
+
+    if (step === TOTAL - 1) {
+      // Let a host page know the learner finished, if it listens.
+      try { window.parent.postMessage({ type: "five-whys-complete" }, "*"); } catch (e) {}
+    }
+  }
+
+  $("next").addEventListener("click", () => { step = step === TOTAL - 1 ? 0 : step + 1; render();  });
+  $("back").addEventListener("click", () => { if (step > 0) { step--; render(); } });
+  render();
+
+})();</script>
+</div>

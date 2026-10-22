@@ -1,0 +1,237 @@
+<!-- 5 Whys fishbone interactive (isolated). Paste this into a Litmos embed-code block. -->
+<iframe title="Root cause: 5 Whys fishbone" style="width:100%;height:780px;border:0;" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;Root Cause: 5 Whys&lt;/title&gt;
+&lt;style&gt;
+  :root {
+    --green: #4fbe50;
+    --green-dark: #2f8a31;
+    --yellow: #ffc100;
+    --text: #272727;
+    --muted: #6b6f73;
+    --line: #c9cdd1;
+    --ruled: #b7bbbf;
+    --bg: #ffffff;
+    --panel: #f5f7f8;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.45 -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Arial, sans-serif; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 16px; }
+  .step-label { font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--green-dark); margin: 0 0 4px; }
+  h1 { font-size: 20px; margin: 0 0 6px; }
+  .intro { margin: 0 0 12px; color: var(--muted); }
+
+  .diagram { width: 100%; height: auto; display: block; background: var(--panel); border-radius: 10px; }
+  .spine { stroke: var(--text); stroke-width: 4; }
+  .bone { stroke: var(--line); stroke-width: 3; transition: stroke .3s; }
+  .bone.active { stroke: var(--green); stroke-width: 4; }
+  .bone.ruled { stroke: var(--ruled); stroke-dasharray: 6 5; }
+  .cat { font-size: 15px; font-weight: 700; fill: var(--text); }
+  .cand { font-size: 13px; fill: var(--text); transition: opacity .3s; }
+  .ruled-text { fill: var(--muted); text-decoration: line-through; }
+  .head { fill: var(--yellow); stroke: var(--text); stroke-width: 2; }
+  .head-text { font-size: 14px; font-weight: 700; fill: var(--text); }
+  .why-node circle { fill: #fff; stroke: var(--line); stroke-width: 2; transition: all .3s; }
+  .why-node text { font-size: 13px; font-weight: 700; fill: var(--muted); }
+  .why-node.done circle { fill: var(--green); stroke: var(--green-dark); }
+  .why-node.done text { fill: #fff; }
+  .why-node.root circle { fill: var(--yellow); stroke: var(--text); }
+  .why-node.root text { fill: var(--text); }
+
+  .card { margin-top: 14px; border: 1px solid var(--line); border-left: 6px solid var(--green); border-radius: 8px; padding: 14px 16px; background: #fff; }
+  .card.root { border-left-color: var(--yellow); }
+  .q { font-weight: 700; font-size: 17px; margin: 0 0 4px; }
+  .a { margin: 0 0 8px; }
+  .evidence { margin: 0; font-size: 14px; color: var(--muted); }
+  .evidence b { color: var(--text); }
+  ul.ruled-list { margin: 6px 0 0; padding-left: 20px; font-size: 14px; }
+  ul.ruled-list li { margin: 3px 0; }
+  .issue { background: var(--panel); border-radius: 6px; padding: 10px 12px; font-size: 14px; margin: 8px 0 0; }
+
+  .nav { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  button { font: inherit; font-weight: 700; border-radius: 6px; padding: 10px 18px; cursor: pointer; border: 2px solid var(--green); }
+  .primary { background: var(--green); color: var(--text); }
+  .secondary { background: #fff; color: var(--text); }
+  button:focus-visible { outline: 3px solid var(--yellow); outline-offset: 2px; }
+  button[disabled] { opacity: .45; cursor: default; }
+  .progress { margin-left: auto; align-self: center; font-size: 13px; color: var(--muted); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  @media (max-width: 560px) {
+    .cand { display: none; }
+    .progress { margin-left: 0; width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+  &lt;p class=&quot;step-label&quot; id=&quot;stepLabel&quot;&gt;&lt;/p&gt;
+  &lt;h1 id=&quot;title&quot;&gt;&lt;/h1&gt;
+  &lt;p class=&quot;intro&quot; id=&quot;intro&quot;&gt;&lt;/p&gt;
+
+  &lt;svg class=&quot;diagram&quot; viewBox=&quot;0 0 960 400&quot; role=&quot;img&quot; aria-labelledby=&quot;dgTitle dgDesc&quot;&gt;
+    &lt;title id=&quot;dgTitle&quot;&gt;Fishbone diagram for the problem: Room 214 is 4 degrees above setpoint&lt;/title&gt;
+    &lt;desc id=&quot;dgDesc&quot;&gt;Six cause categories branch off a central spine. The 5 Whys chain runs along the Controls and BAS bone.&lt;/desc&gt;
+    &lt;line class=&quot;spine&quot; x1=&quot;40&quot; y1=&quot;200&quot; x2=&quot;770&quot; y2=&quot;200&quot;/&gt;
+    &lt;polygon class=&quot;head&quot; points=&quot;770,150 930,150 950,200 930,250 770,250&quot;/&gt;
+    &lt;text class=&quot;head-text&quot; x=&quot;860&quot; y=&quot;190&quot; text-anchor=&quot;middle&quot;&gt;Room 214&lt;/text&gt;
+    &lt;text class=&quot;head-text&quot; x=&quot;860&quot; y=&quot;210&quot; text-anchor=&quot;middle&quot;&gt;4°F above&lt;/text&gt;
+    &lt;text class=&quot;head-text&quot; x=&quot;860&quot; y=&quot;230&quot; text-anchor=&quot;middle&quot;&gt;setpoint&lt;/text&gt;
+    &lt;g id=&quot;bones&quot;&gt;&lt;/g&gt;
+    &lt;g id=&quot;whys&quot;&gt;&lt;/g&gt;
+  &lt;/svg&gt;
+
+  &lt;div id=&quot;panel&quot; aria-live=&quot;polite&quot;&gt;&lt;/div&gt;
+
+  &lt;div class=&quot;nav&quot;&gt;
+    &lt;button class=&quot;secondary&quot; id=&quot;back&quot;&gt;Back&lt;/button&gt;
+    &lt;button class=&quot;primary&quot; id=&quot;next&quot;&gt;&lt;/button&gt;
+    &lt;span class=&quot;progress&quot; id=&quot;progress&quot;&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  // Content. Edit text here; the layout adapts.
+  const categories = [
+    { id: &quot;equip&quot;,   name: &quot;Equipment&quot;,        cand: &quot;Reheat coil failed?&quot;,  top: true,  x: 170,
+      ruled: &quot;Coil passed its pressure test, and hot water flows when the valve is opened by hand.&quot; },
+    { id: &quot;hw&quot;,      name: &quot;Hot water supply&quot;, cand: &quot;No hot water at coil?&quot;, top: true,  x: 400,
+      ruled: &quot;Hot water supply reads 140°F at the coil inlet.&quot; },
+    { id: &quot;controls&quot;,name: &quot;Controls &amp; BAS&quot;,   cand: &quot;Valve not responding?&quot;, top: true,  x: 630, keep: true },
+    { id: &quot;design&quot;,  name: &quot;Design&quot;,           cand: &quot;Box undersized?&quot;,      top: false, x: 170,
+      ruled: &quot;Box matches the equipment schedule, and identical rooms on the same design hold setpoint.&quot; },
+    { id: &quot;tab&quot;,     name: &quot;Airflow / TAB&quot;,    cand: &quot;Airflow too high?&quot;,    top: false, x: 400,
+      ruled: &quot;TAB report shows heating airflow at the design minimum.&quot; },
+    { id: &quot;ops&quot;,     name: &quot;Operation&quot;,        cand: &quot;Wrong setpoint?&quot;,      top: false, x: 630,
+      ruled: &quot;Setpoint is 72°F, matching the sequence of operations.&quot; },
+  ];
+
+  const whys = [
+    { q: &quot;Why is Room 214 above setpoint?&quot;, a: &quot;The VAV box is delivering warm air when the BAS is calling for cooling.&quot;,
+      ev: &quot;Discharge air reads 88°F while the BAS shows a cooling demand and the reheat valve commanded closed (0%).&quot; },
+    { q: &quot;Why is the air warm?&quot;, a: &quot;The reheat valve is open, even though the BAS commands it closed.&quot;,
+      ev: &quot;The valve stem is at full open, and the coil return pipe is hot to the touch.&quot; },
+    { q: &quot;Why is the valve open?&quot;, a: &quot;The actuator is receiving a full-open signal.&quot;,
+      ev: &quot;Meter reads 10 V DC at the actuator terminals while the BAS shows 0% command on the valve point.&quot; },
+    { q: &quot;Why is it getting a full-open signal?&quot;, a: &quot;The actuator is landed on the wrong controller output.&quot;,
+      ev: &quot;Wire traced from the actuator to output AO-4. The points list assigns the reheat valve to AO-2; AO-4 is a 0–10 V output held at 100%.&quot; },
+    { q: &quot;Why is it on the wrong output?&quot;, a: &quot;The field wiring doesn&#x27;t match the approved controls submittal.&quot;,
+      ev: &quot;Approved submittal 23 09 23-004, p. 12 shows the reheat valve on AO-2.&quot; }
+  ];
+
+  const root = {
+    cause: &quot;Reheat valve actuator for VAV-2-14 is wired to output AO-4 instead of AO-2.&quot;,
+    party: &quot;Controls contractor&quot;,
+    issue: &quot;Level 2, Room 214, VAV-2-14: Space temperature 4°F above setpoint during cooling. Reheat valve actuator is landed on AO-4 instead of AO-2. Not IAW approved submittal 23 09 23-004, p. 12. Required action: Re-land the actuator per the approved submittal, verify the valve tracks the BAS command, and notify CxA for re-inspection. See Photos 1–3 and the attached trend.&quot;
+  };
+
+  // Steps: 0 brainstorm, 1 evidence, 2..6 whys, 7 root cause
+  const TOTAL = 2 + whys.length + 1;
+  let step = 0;
+
+  const svgNS = &quot;http://www.w3.org/2000/svg&quot;;
+  const bonesG = document.getElementById(&quot;bones&quot;);
+  const whysG = document.getElementById(&quot;whys&quot;);
+  const el = (n, a, t) =&gt; { const e = document.createElementNS(svgNS, n);
+    for (const k in a) e.setAttribute(k, a[k]); if (t) e.textContent = t; return e; };
+
+  // Draw bones
+  categories.forEach(c =&gt; {
+    const y2 = c.top ? 40 : 360;
+    const x1 = c.x + 90;
+    const g = el(&quot;g&quot;, { id: &quot;b-&quot; + c.id });
+    g.appendChild(el(&quot;line&quot;, { class: &quot;bone&quot;, x1: x1, y1: 200, x2: c.x, y2: y2 }));
+    g.appendChild(el(&quot;text&quot;, { class: &quot;cat&quot;, x: c.x, y: c.top ? 28 : 385, &quot;text-anchor&quot;: &quot;middle&quot; }, c.name));
+    g.appendChild(el(&quot;text&quot;, { class: &quot;cand&quot;, x: c.x + 58, y: c.top ? 100 : 306, &quot;text-anchor&quot;: &quot;start&quot; }, c.cand));
+    bonesG.appendChild(g);
+  });
+
+  // Why nodes along the Controls bone (from spine up toward its tip)
+  const ctl = categories.find(c =&gt; c.keep);
+  const bx1 = ctl.x + 90, by1 = 200, bx2 = ctl.x, by2 = 40;
+  whys.forEach((w, i) =&gt; {
+    const t = (i + 1) / (whys.length + 0.6);
+    const cx = bx1 + (bx2 - bx1) * t, cy = by1 + (by2 - by1) * t;
+    const g = el(&quot;g&quot;, { class: &quot;why-node&quot;, id: &quot;w&quot; + i });
+    g.appendChild(el(&quot;circle&quot;, { cx: cx, cy: cy, r: 13 }));
+    g.appendChild(el(&quot;text&quot;, { x: cx, y: cy + 4.5, &quot;text-anchor&quot;: &quot;middle&quot; }, String(i + 1)));
+    whysG.appendChild(g);
+  });
+
+  const $ = id =&gt; document.getElementById(id);
+
+  function render() {
+    // Diagram state
+    categories.forEach(c =&gt; {
+      const g = $(&quot;b-&quot; + c.id);
+      const bone = g.querySelector(&quot;.bone&quot;), cand = g.querySelector(&quot;.cand&quot;);
+      const ruled = step &gt;= 1 &amp;&amp; !c.keep;
+      bone.classList.toggle(&quot;ruled&quot;, ruled);
+      bone.classList.toggle(&quot;active&quot;, step &gt;= 2 &amp;&amp; c.keep);
+      cand.classList.toggle(&quot;ruled-text&quot;, ruled);
+      cand.style.opacity = (step &gt;= 2 &amp;&amp; c.keep) ? 0 : 1;
+    });
+    whys.forEach((w, i) =&gt; {
+      const g = $(&quot;w&quot; + i);
+      g.style.opacity = step &gt;= 2 ? 1 : 0;
+      g.classList.toggle(&quot;done&quot;, step &gt;= 2 + i);
+      g.classList.toggle(&quot;root&quot;, step === TOTAL - 1 &amp;&amp; i === whys.length - 1);
+    });
+
+    // Text
+    let label, title, intro, html, nextText;
+    if (step === 0) {
+      label = &quot;Step 1 of &quot; + TOTAL + &quot; · Brainstorm&quot;;
+      title = &quot;Map the possible causes&quot;;
+      intro = &quot;A fishbone diagram lists possible causes by category before you pick one. Each bone is a category; each question is a candidate cause.&quot;;
+      html = &#x27;&lt;div class=&quot;card&quot;&gt;&lt;p class=&quot;q&quot;&gt;The symptom&lt;/p&gt;&lt;p class=&quot;a&quot;&gt;Room 214 is 4°F above setpoint during occupied cooling hours.&lt;/p&gt;&lt;p class=&quot;evidence&quot;&gt;This is the &lt;b&gt;observed condition&lt;/b&gt;. It goes in the issue, but it is not the root cause.&lt;/p&gt;&lt;/div&gt;&#x27;;
+      nextText = &quot;Check the evidence&quot;;
+    } else if (step === 1) {
+      label = &quot;Step 2 of &quot; + TOTAL + &quot; · Evidence&quot;;
+      title = &quot;Rule causes out with evidence, not opinion&quot;;
+      intro = &quot;Each candidate is checked against a reading, a report or an observation. Five are ruled out. One bone is left.&quot;;
+      html = &#x27;&lt;div class=&quot;card&quot;&gt;&lt;p class=&quot;q&quot;&gt;Ruled out&lt;/p&gt;&lt;ul class=&quot;ruled-list&quot;&gt;&#x27; +
+        categories.filter(c =&gt; !c.keep).map(c =&gt; &quot;&lt;li&gt;&lt;b&gt;&quot; + c.name + &quot;:&lt;/b&gt; &quot; + c.ruled + &quot;&lt;/li&gt;&quot;).join(&quot;&quot;) +
+        &#x27;&lt;/ul&gt;&lt;p class=&quot;evidence&quot; style=&quot;margin-top:8px&quot;&gt;&lt;b&gt;Still open:&lt;/b&gt; Controls &amp;amp; BAS. Now ask &quot;why&quot; along that bone.&lt;/p&gt;&lt;/div&gt;&#x27;;
+      nextText = &quot;Ask the first why&quot;;
+    } else if (step &lt; TOTAL - 1) {
+      const i = step - 2, w = whys[i];
+      label = &quot;Step &quot; + (step + 1) + &quot; of &quot; + TOTAL + &quot; · Why #&quot; + (i + 1);
+      title = w.q;
+      intro = &quot;Answer with evidence before you ask the next why.&quot;;
+      html = &#x27;&lt;div class=&quot;card&quot;&gt;&lt;p class=&quot;q&quot;&gt;&#x27; + w.q + &#x27;&lt;/p&gt;&lt;p class=&quot;a&quot;&gt;&#x27; + w.a + &#x27;&lt;/p&gt;&lt;p class=&quot;evidence&quot;&gt;&lt;b&gt;Evidence:&lt;/b&gt; &#x27; + w.ev + &#x27;&lt;/p&gt;&lt;/div&gt;&#x27;;
+      nextText = i === whys.length - 1 ? &quot;Name the root cause&quot; : &quot;Ask why again&quot;;
+    } else {
+      label = &quot;Step &quot; + TOTAL + &quot; of &quot; + TOTAL + &quot; · Root cause&quot;;
+      title = &quot;Stop at a cause someone can fix&quot;;
+      intro = &quot;\&quot;Bad wiring\&quot; isn&#x27;t a root cause. A specific, fixable condition with an owner is.&quot;;
+      html = &#x27;&lt;div class=&quot;card root&quot;&gt;&lt;p class=&quot;q&quot;&gt;Root cause&lt;/p&gt;&lt;p class=&quot;a&quot;&gt;&#x27; + root.cause + &#x27;&lt;/p&gt;&#x27; +
+        &#x27;&lt;p class=&quot;evidence&quot;&gt;&lt;b&gt;Responsible party:&lt;/b&gt; &#x27; + root.party + &#x27;&lt;/p&gt;&#x27; +
+        &#x27;&lt;p class=&quot;issue&quot;&gt;&lt;b&gt;Issue statement:&lt;/b&gt; &#x27; + root.issue + &#x27;&lt;/p&gt;&lt;/div&gt;&#x27;;
+      nextText = &quot;Start over&quot;;
+    }
+    $(&quot;stepLabel&quot;).textContent = label;
+    $(&quot;title&quot;).textContent = title;
+    $(&quot;intro&quot;).textContent = intro;
+    $(&quot;panel&quot;).innerHTML = html;
+    $(&quot;next&quot;).textContent = nextText;
+    $(&quot;back&quot;).disabled = step === 0;
+    $(&quot;progress&quot;).textContent = (step + 1) + &quot; / &quot; + TOTAL;
+
+    if (step === TOTAL - 1) {
+      // Let a host page know the learner finished, if it listens.
+      try { window.parent.postMessage({ type: &quot;five-whys-complete&quot; }, &quot;*&quot;); } catch (e) {}
+    }
+  }
+
+  $(&quot;next&quot;).addEventListener(&quot;click&quot;, () =&gt; { step = step === TOTAL - 1 ? 0 : step + 1; render(); $(&quot;title&quot;).focus?.(); });
+  $(&quot;back&quot;).addEventListener(&quot;click&quot;, () =&gt; { if (step &gt; 0) { step--; render(); } });
+  render();
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
